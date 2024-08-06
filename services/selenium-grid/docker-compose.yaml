@@ -1,0 +1,37 @@
+services:
+  # selenium hub
+  selenium-hub:
+    image: selenium/hub:4.23.0
+    container_name: selelnium_hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+      
+  # selenium node for chrome
+  chrome:
+    image: selenium/node-chrome:127.0
+    shm_size: 2gb
+    container_name: selelnium_chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - "6900:5900"
+
+# selenium node for firefox
+  firefox:
+    image: selenium/node-firefox:128.0
+    shm_size: 2gb
+    container_name: selelnium_firefox
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - "6902:5900"

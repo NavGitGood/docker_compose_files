@@ -6,7 +6,10 @@ docker compose files for different ready to use services
     - to connect to postgresql database
         - name -> container-name
         - host name/address -> service name
-        -
+        
+2. selenium hub (port:4444) with 2 nodes - one each for chrome and firefox
+    - to run tests, use ip:4444/wd/hub as address for RemoteWebDriver
+    - to access grid dashboard, use ip::4444/ui/
 
 
 # how to use
