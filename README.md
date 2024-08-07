@@ -7,7 +7,7 @@ docker compose files for different ready to use services
         - name -> container-name
         - host name/address -> service name
         
-2. selenium hub (port:4444) with 2 nodes - one each for chrome and firefox
+2. selenium hub (port:4444) with dynamic nodes (chrome, firefox and edge)
     - to run tests, use ip:4444/wd/hub as address for RemoteWebDriver
     - to access grid dashboard, use ip::4444/ui/
 
